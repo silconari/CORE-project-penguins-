@@ -19,7 +19,7 @@ def animal_info_fn():
     print(request.args)
     species = request.args.get("species")
     island = request.args.get("island")
-    raise ValueError("error")
+    #raise ValueError("error")
     return {
         "species": species,
         "island": island,
