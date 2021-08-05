@@ -4,6 +4,9 @@ import streamlit as st
 import altair as alt
 import os
 from pymongo import MongoClient
+import streamlit as st
+import requests
+import pandas as pd
 
 load_dotenv()
 
@@ -22,6 +25,12 @@ images = st.image([os.path.join(os.path.dirname(__file__),
                   os.path.join(os.path.dirname(__file__),
                                "../../assets/Chinstrap_penguin.jpg"),
                   os.path.join(os.path.dirname(__file__), '../../assets/Gentoo_penguin.jpg')], width=200, caption=["Adelie", "Chinstrap", "Gentoo"])
+
+
+response = requests.get("http://127.0.01:3000/")
+print(response.json())
+data_table1 = pd.DataFrame(response.json())
+st.write(data_table1)
 
 
 # Elegir pingüino por ID --> ya funciona en Streamlit, cambiar haciendo una request desde flask
