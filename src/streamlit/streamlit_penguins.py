@@ -24,7 +24,7 @@ images = st.image([os.path.join(os.path.dirname(__file__),
                   os.path.join(os.path.dirname(__file__), '../../assets/Gentoo_penguin.jpg')], width=200, caption=["Adelie", "Chinstrap", "Gentoo"])
 
 
-# Elegir pingüino por ID
+# Elegir pingüino por ID --> ya funciona en Streamlit, cambiar haciendo una request desde flask
 
 id_number = st.text_input("Which penguin am I? (ID_number)")
 
