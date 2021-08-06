@@ -27,13 +27,12 @@ images = st.image([os.path.join(os.path.dirname(__file__),
                   os.path.join(os.path.dirname(__file__), '../../assets/Gentoo_penguin.jpg')], width=200, caption=["Adelie", "Chinstrap", "Gentoo"])
 
 
-response = requests.get("http://127.0.01:3000/")
-print(response.json())
-data_table1 = pd.DataFrame(response.json())
-st.write(data_table1)
-
-
 # Elegir pingüino por ID --> ya funciona en Streamlit, cambiar haciendo una request desde flask
+
+#response = requests.get("http://127.0.01:3000/")
+# print(response.json())
+#data_table1 = pd.DataFrame(response.json())
+# st.write(data_table1)
 
 id_number = st.text_input("Which penguin am I? (ID_number)")
 
@@ -50,8 +49,10 @@ else:
 species = st.radio("Pick a specie", ("Adelie", "Chinstrap", "Gentoo"))
 
 
-# Comparar medidas entre especies o machos y hembras
+# ¿macho o hembra?
 
+
+############### Estadísticas por especie ############################
 
 # alt.Chart(penguins).mark_circle(size=60).encode(
 #   x=penguins.find({}, {"Species": 1}),
