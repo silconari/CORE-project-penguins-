@@ -3,6 +3,8 @@ import altair as alt
 import os
 import requests
 import pandas as pd
+from streamlit_folium import folium_static
+import folium
 
 
 st.title("Welcome to Palmer penguins")
@@ -62,3 +64,22 @@ body_mass_chart = alt.Chart(penguins_db).mark_circle().encode(
 ).properties(width="container", height=300)
 
 st.altair_chart(body_mass_chart)
+
+
+# Geolocalización de las islas del Archipiélago Palmer
+
+st.header("Where penguins live?")
+
+geoquerys = requests.get("http://127.0.0.1:5000/location")
+
+geoquerys_db = pd.DataFrame.from_dict(geoquerys.json(), orient="index")
+
+islands = st.radio("Pick a island", ("Torgersen", "Biscoe", "Dream"))
+
+# if islands == "Torgersen":
+
+
+# elif islands == "Biscoe":
+
+
+# else:
