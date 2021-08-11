@@ -6,7 +6,6 @@ import pandas as pd
 from streamlit_folium import folium_static
 import folium
 
-
 st.title("Welcome to Palmer penguins")
 
 images = st.image([os.path.join(os.path.dirname(__file__),
@@ -61,25 +60,64 @@ body_mass_chart = alt.Chart(penguins_db).mark_circle().encode(
     x="Flipper Length (mm)",
     y="Body Mass (g)",
     color=alt.Color("Species", legend=alt.Legend(title="Species by color"))
-).properties(width="container", height=300)
+).properties(height=900)
 
-st.altair_chart(body_mass_chart)
+st.altair_chart(body_mass_chart, True)
 
 
 # Geolocalización de las islas del Archipiélago Palmer
 
 st.header("Where penguins live?")
 
-geoquerys = requests.get("http://127.0.0.1:5000/location")
-
-geoquerys_db = pd.DataFrame.from_dict(geoquerys.json(), orient="index")
 
 islands = st.radio("Pick a island", ("Torgersen", "Biscoe", "Dream"))
 
-# if islands == "Torgersen":
+initial_location = []
+folium_markers = []
+
+if islands == "Torgersen":
+
+    Torgersen = requests.get(
+        "http://127.0.0.1:5000/location?name=Torgersen%20Island,%20Antarctica").json()
+
+    initial_location = [Torgersen["latitude"],
+                        Torgersen["longitude"]]
+
+    folium_markers.append(
+        folium.Marker(
+            [Torgersen["latitude"], Torgersen["longitude"]], popup="Torgersen Island", tooltip="Torgersen Island")
+    )
+
+elif islands == "Biscoe":
+
+    Biscoe = requests.get(
+        "http://127.0.0.1:5000/location?name=Biscoe%20Islands,%20Antarctica").json()
+
+    initial_location = [Biscoe["latitude"],
+                        Biscoe["longitude"]]
+
+    folium_markers.append(
+        folium.Marker(
+            [Biscoe["latitude"], Biscoe["longitude"]], popup="Biscoe Island", tooltip="Biscoe Island")
+    )
 
 
-# elif islands == "Biscoe":
+else:
+
+    Dream = requests.get(
+        "http://127.0.0.1:5000/location?name=Dream%20Island,%20Antarctica").json()
+
+    initial_location = [Dream["latitude"],
+                        Dream["longitude"]]
+
+    folium_markers.append(
+        folium.Marker(
+            [Dream["latitude"], Dream["longitude"]], popup="Dream Island", tooltip="Dream Island")
+    )
 
 
-# else:
+m = folium.Map(location=initial_location, zoom_start=8)
+for elem in folium_markers:
+    elem.add_to(m)
+
+folium_static(m)

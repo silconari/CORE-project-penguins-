@@ -15,18 +15,17 @@ load_dotenv()
 
 
 @app.route("/")
-@handle_error
+# @handle_error
 def get_coll():
     penguins_coll = get_mongo_db().get_collection("penguins")
     return json_util.dumps(list(penguins_coll.find({})))
 
 
 @app.route("/location")
-@handle_error
+# @handle_error
 def get_geoquery():
-
     API_key = os.getenv("API_key")
-    location = "Torgersen Island, Antarctica"
+    name = request.args["name"]
     geoquery = requests.get(
-        f"http://api.positionstack.com/v1/forward?access_key={API_key}&query={location}")
-    return json_util.dumps([{"latitude": e["latitude"], "longitude": e["longitude"]} for e in (geoquery.json()["data"])][0])
+        f"http://api.positionstack.com/v1/forward?access_key={API_key}&query={name}")
+    return json_util.dumps({"latitude": geoquery.json()["data"][0]["latitude"], "longitude": geoquery.json()["data"][0]["longitude"]})
