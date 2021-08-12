@@ -1,24 +1,44 @@
 from requests.api import get
 import os
-from werkzeug.wrappers import response
 from utils.handle_error import handle_error
-import json
-from utils.json_response import json_response
 from app import app
 from flask import request
 from utils.mongo_connect import get_mongo_db
 from bson import json_util
 import requests
-import streamlit as st
 from dotenv import load_dotenv
 load_dotenv()
 
 
 @app.route("/")
 # @handle_error
-def get_coll():
+def get_coll_penguins():
     penguins_coll = get_mongo_db().get_collection("penguins")
     return json_util.dumps(list(penguins_coll.find({})))
+
+
+@app.route("/islands")
+# @handle_error
+def get_coll_islands():
+    lat_lon = request.args["latlon"].split(",")
+    lat_lon = [float(e) for e in lat_lon]
+    islands_coll = get_mongo_db().get_collection("islands")
+    return json_util.dumps(
+        list(
+            islands_coll.find(
+                {
+                    "location": {
+                        "$near": {
+                            "$geometry": {
+                                "type": "Point",
+                                "coordinates": lat_lon
+                            },
+                        }
+                    }
+                }
+            )
+        )[0]
+    )
 
 
 @app.route("/location")
