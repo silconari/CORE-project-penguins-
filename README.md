@@ -22,77 +22,77 @@ Está compuesta por dos colecciones, una con la información del dataset de los 
 El proyecto está dividido en tres carpetas diferentes de un mismo repositorio (CORE-project-penguins):
 
 - assets. 
- 
-    Contiene las imágenes utilizadas en el dashboard de Streamlit
 
- - data.
+Contiene las imágenes utilizadas en el dashboard de Streamlit
 
-    Con los datos originales y limpiados de los que parte el proyecto. 
+- data.
 
- - src.
+Con los datos originales y limpiados de los que parte el proyecto. 
 
-    Es la carpeta raíz y en ella se desglosa prácticamente todo el código.
+- src.
 
- 
- Por otro lado se encuentran los archivos que no son código python: .env, readme, .gitignore, requerirements.
+Es la carpeta raíz y en ella se desglosa prácticamente todo el código.
+
+
+Por otro lado se encuentran los archivos que no son código python: .env, readme, .gitignore, requerirements.
 
 
  🐧🐧--CREANDO API EN FLASK -- 🐧🐧
 
 Flask está repartido en varios:
 
-    - controllers. root_controllers. La carpeta controllers contiene el archivo con las funciones controladoras que implementan los endpoints, son cuatro:
+- controllers. root_controllers. La carpeta controllers contiene el archivo con las funciones controladoras que implementan los endpoints, son cuatro:
 
-            1. La primera hace una petición a la base de datos de los pinguinos en formato json. Es la "raíz" de los endpoints. 
+        1. La primera hace una petición a la base de datos de los pinguinos en formato json. Es la "raíz" de los endpoints. 
 
-            2. La segunda contiene una petición a la segunda colección de la base de datos de los pinguinos donde guardo cada una de las coordenadas de las islas. Devuelve un json con una geoquery que marca la isla más cercana a las coordenadas dadas por el usuario en streamlit. 
+        2. La segunda contiene una petición a la segunda colección de la base de datos de los pinguinos donde guardo cada una de las coordenadas de las islas. Devuelve un json con una geoquery que marca la isla más cercana a las coordenadas dadas por el usuario en streamlit. 
 
-            3. La tercera función hace una petición a una API que devuelve un json con las coordenadas del lugar que elija el usuario (en este caso son las islas de los pinguinos).
-    - app. 
+        3. La tercera función hace una petición a una API que devuelve un json con las coordenadas del lugar que elija el usuario (en este caso son las islas de los pinguinos).
+- app. 
 
-    Crea la aplicación de flask. 
+Crea la aplicación de flask. 
 
-    - config. 
+- config. 
 
-    Contiene el puerto donde se va a ejecutar la API. 
+Contiene el puerto donde se va a ejecutar la API. 
 
-    - server. 
+- server. 
 
-    Inicia el servidor que expone la API.
+Inicia el servidor que expone la API.
 
-    - main.
+- main.
 
-    Contiene el page_manager que gestiona las diferentes páginas de mi dashboard en streamlit. 
+Contiene el page_manager que gestiona las diferentes páginas de mi dashboard en streamlit. 
 
 
  🐧🐧 -- CREANDO DASHBOARD -- 🐧🐧
 
-    Streamlit se reparte también en diferentes archivos. 
+Streamlit se reparte también en diferentes archivos. 
 
-    - islands.
+- islands.
 
-    Con el contenido que se muestra en la segunda página del dashboard:
+Con el contenido que se muestra en la segunda página del dashboard:
 
-        - Imágenes de las diferentes especies de pingüinos antárticos.
-        - una request a la función controladora que muestra al usuario la isla más cercana a las coordenadas que indica por una casilla de texto. 
+    - Imágenes de las diferentes especies de pingüinos antárticos.
+    - una request a la función controladora que muestra al usuario la isla más cercana a las coordenadas que indica por una casilla de texto. 
 
-    - penguins.
+- penguins.
 
-    Muestra el contenido de la página principal del dashboard, con las imágenes de los pingüinos del archipiélago de Palmer, algunas estadísticas y un mapa que marca en el mapa las diferentes islas del archipiélago. 
+Muestra el contenido de la página principal del dashboard, con las imágenes de los pingüinos del archipiélago de Palmer, algunas estadísticas y un mapa que marca en el mapa las diferentes islas del archipiélago. 
 
-    - multipage. 
+- multipage. 
 
-    Contiene la clase y métodos que crean diferentes páginas en el dashboard de Streamlit. 
+Contiene la clase y métodos que crean diferentes páginas en el dashboard de Streamlit. 
 
-    - utils 
-        - hanndle_error. Devuelve un texto con un error en caso de que se produzca un fallo en la ejecución de la API. 
+- utils 
+    - hanndle_error. Devuelve un texto con un error en caso de que se produzca un fallo en la ejecución de la API. 
 
-        - json_response. Devuelve las respuestas en formato json. 
+    - json_response. Devuelve las respuestas en formato json. 
 
-        - mongo_connect. Conecta con la base de datos en MongoAtlas. 
+    - mongo_connect. Conecta con la base de datos en MongoAtlas. 
 
 
-                🧊🧊🧊🧊🧊        🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧                🧊🧊🧊🧊🧊 
+    🧊🧊🧊🧊🧊        🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧                🧊🧊🧊🧊🧊 
 
 
 
@@ -101,15 +101,13 @@ Flask está repartido en varios:
 
 Además de cumplir con los siguientes levels del proyecto... me han quedado tareas pendientes que me gustaría haber realizado con el dataset.
 
-    - Añadir más gráficas a partir de los datos de las medidas del pico de los pingüinos de cada especie.
-    - Crear más contenido en otras páginas del dashboard
-    - Añadir botones con funcionalidades
-    - Mejorar la estética y organización del readme. 
+- Añadir más gráficas a partir de los datos de las medidas del pico de los pingüinos de cada especie.
+- Crear más contenido en otras páginas del dashboard
+- Añadir botones con funcionalidades
+- Mejorar la estética y organización del readme. 
 
 
 📚 -- REFERENCES --
 
-* 
-
-Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version  0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218. 
+* Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version  0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218. 
    
