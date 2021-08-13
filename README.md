@@ -74,8 +74,8 @@ Streamlit se reparte también en diferentes archivos.
 
 Con el contenido que se muestra en la segunda página del dashboard:
 
-    - Imágenes de las diferentes especies de pingüinos antárticos.
-    - una request a la función controladora que muestra al usuario la isla más cercana a las coordenadas que indica por una casilla de texto. 
+- Imágenes de las diferentes especies de pingüinos antárticos.
+- una request a la función controladora que muestra al usuario la isla más cercana a las coordenadas que indica por una casilla de texto. 
 
 - penguins.
 
