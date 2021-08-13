@@ -1,7 +1,7 @@
 # CORE-project-penguins
 First project in CORE school 
 
-🐧🐧 -- PREPARANDO EL DATASET -- 🐧🐧
+## 🐧🐧  Preparando dataset 🐧🐧
 
 El dataset elegido en este proyecto ha sido "Palmer Archipelago Penguins" que contenía una serie de datos sobre varias colonias de pinguinos de la Antártida. 
 
@@ -17,7 +17,7 @@ La base de datos "limpia" la he subido a MongoDB Atlas y he accedido a ella a tr
 
 Está compuesta por dos colecciones, una con la información del dataset de los pinguinos y otra con el nombre y coordenadas de la isla a la que pertenecen.
 
- 🐧🐧 -- ORGANIZACIÓN DEL CÓDIGO -- 🐧🐧
+## 🐧🐧  Organización del código  🐧🐧
 
 El proyecto está dividido en tres carpetas diferentes de un mismo repositorio (CORE-project-penguins):
 
@@ -37,7 +37,7 @@ Es la carpeta raíz y en ella se desglosa prácticamente todo el código.
 Por otro lado se encuentran los archivos que no son código python: .env, readme, .gitignore, requerirements.
 
 
- 🐧🐧--CREANDO API EN FLASK -- 🐧🐧
+## 🐧🐧 Creando API en Flask  🐧🐧
 
 Flask está repartido en varios:
 
@@ -66,7 +66,7 @@ Inicia el servidor que expone la API.
 Contiene el page_manager que gestiona las diferentes páginas de mi dashboard en streamlit. 
 
 
- 🐧🐧 -- CREANDO DASHBOARD -- 🐧🐧
+ ## 🐧🐧  Creando dashboard  🐧🐧
 
 Streamlit se reparte también en diferentes archivos. 
 
@@ -98,7 +98,7 @@ Contiene la clase y métodos que crean diferentes páginas en el dashboard de St
 
 
 
- 😥 -- COSAS PENDIENTES --
+### 😥  Cosas pendientes
 
 Además de cumplir con los siguientes levels del proyecto... me han quedado tareas pendientes que me gustaría haber realizado con el dataset.
 
@@ -108,7 +108,7 @@ Además de cumplir con los siguientes levels del proyecto... me han quedado tare
 - Mejorar la estética y organización del readme. 
 
 
-📚 -- REFERENCES --
+## 📚  References
 
 * Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version  0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218. 
    
