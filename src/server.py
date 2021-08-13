@@ -1,6 +1,5 @@
 from config import PORT
 import controllers.root_controllers
-from json import load
 from app import app
 
 
