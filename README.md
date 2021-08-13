@@ -93,7 +93,7 @@ Contiene la clase y métodos que crean diferentes páginas en el dashboard de St
     - mongo_connect. Conecta con la base de datos en MongoAtlas. 
 
 
-                        🧊🧊🧊🧊🧊        🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧                🧊🧊🧊🧊🧊 
+ 🧊🧊🧊🧊🧊        🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧                🧊🧊🧊🧊🧊 
 
 
 
