@@ -43,11 +43,12 @@ Flask está repartido en varios:
 
 - controllers. root_controllers. La carpeta controllers contiene el archivo con las funciones controladoras que implementan los endpoints, son cuatro:
 
-        1. La primera hace una petición a la base de datos de los pinguinos en formato json. Es la "raíz" de los endpoints. 
+1. La primera hace una petición a la base de datos de los pinguinos en formato json. Es la "raíz" de los endpoints. 
 
-        2. La segunda contiene una petición a la segunda colección de la base de datos de los pinguinos donde guardo cada una de las coordenadas de las islas. Devuelve un json con una geoquery que marca la isla más cercana a las coordenadas dadas por el usuario en streamlit. 
+2. La segunda contiene una petición a la segunda colección de la base de datos de los pinguinos donde guardo cada una de las coordenadas de las islas. Devuelve un json con una geoquery que marca la isla más cercana a las coordenadas dadas por el usuario en streamlit. 
 
-        3. La tercera función hace una petición a una API que devuelve un json con las coordenadas del lugar que elija el usuario (en este caso son las islas de los pinguinos).
+3. La tercera función hace una petición a una API que devuelve un json con las coordenadas del lugar que elija el usuario (en este caso son las islas de los pinguinos).
+
 - app. 
 
 Crea la aplicación de flask. 
@@ -92,7 +93,7 @@ Contiene la clase y métodos que crean diferentes páginas en el dashboard de St
     - mongo_connect. Conecta con la base de datos en MongoAtlas. 
 
 
-    🧊🧊🧊🧊🧊        🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧                🧊🧊🧊🧊🧊 
+                        🧊🧊🧊🧊🧊        🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧                🧊🧊🧊🧊🧊 
 
 
 
