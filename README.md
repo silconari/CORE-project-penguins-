@@ -33,6 +33,7 @@ Los siguientes paquetes de código abierto se han usado en este proyecto:
 * json 
 * Flask 
 * dotenv
+* Folium 
 
 ## Folder Structure 
 
@@ -70,14 +71,24 @@ Los siguientes paquetes de código abierto se han usado en este proyecto:
 
 ## 💾 Dataset
 
-[(https://www.kaggle.com/parulpandey/palmer-archipelago-antarctica-penguin-data)] 🐧
+[Penguins Palmer dataset]("https://www.kaggle.com/parulpandey/palmer-archipelago-antarctica-penguin-data") 🐧
 
 
 ## Look inside 
 
+Gráficas realizadas a partir de los datos del dataset.
+
+Fecha de la puesta de los pingüinos:
+
 ![gráfica fecha puesta de huevos de especies de pingüinos Palmer](assets/egg.PNG)
 
-![gráfica fecha longitud del pico de especies de pingüinos Palmer](assets/culmen_dimension.PNG)
+Comparativas de la longitud del pico en las diferentes especies:
+
+![gráfica comparativa de la longitud del pico de especies de pingüinos Palmer](assets/culmen_dimension.PNG)
+
+Marcadores con las islas del archipiélago:
+
+![Mapa de las islas del archipiélago de Palmer](assets/maps.PNG)
 
 ## 📚  References
 
