@@ -49,7 +49,7 @@ def render_streamlit():
         x="Sex",
         y="count()",
         color=alt.Color("Species", legend=alt.Legend(title="Species by color"))
-    ).properties(width=300, height=300)
+    ).properties(width=400, height=300)
 
     st.altair_chart(sex_chart)
 
@@ -62,6 +62,36 @@ def render_streamlit():
     ).properties(height=900)
 
     st.altair_chart(body_mass_chart, True)
+
+    st.header("*Penguin flipper lengths*")
+
+    flipper_chart = alt.Chart(penguins_db).mark_bar().encode(
+        x="Flipper Length (mm)",
+        y="count()",
+        color=alt.Color("Species", legend=alt.Legend(title="Species by color"))
+    ).properties(height=300)
+
+    st.altair_chart(flipper_chart, True)
+
+    st.header("*Penguin culmen dimensions*")
+
+    culmen_chart = alt.Chart(penguins_db).mark_bar().encode(
+        x="Culmen Length (mm)",
+        y="Culmen Depth (mm)",
+        color=alt.Color("Species", legend=alt.Legend(title="Species by color"))
+    ).properties(height=600)
+
+    st.altair_chart(culmen_chart, True)
+
+    st.header("*Date egg*")
+
+    egg_chart = alt.Chart(penguins_db).mark_bar().encode(
+        x="count()",
+        y="Date Egg",
+        color=alt.Color("Species", legend=alt.Legend(title="Species by color"))
+    ).properties(height=900)
+
+    st.altair_chart(egg_chart, True)
 
     # Geolocalización de las islas del Archipiélago Palmer
 

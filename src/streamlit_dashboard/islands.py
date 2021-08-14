@@ -26,7 +26,7 @@ def render_streamlit():
 
                        ], width=300, caption=["Emperor", "King", "Macaroni", "rockhopper", "Royal", "rare"])
 
-    st.title("From my coordinates to Antartic?")
+    st.title("Which is nearest island from my ubication?")
 
     form = st.form(key='my-form')
     coordinates = form.text_input('Enter latitude,longitude')
