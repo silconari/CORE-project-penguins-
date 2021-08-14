@@ -13,7 +13,8 @@ CORE-project-penguins es mi primer proyecto de CORE. Consiste en una API que hac
   * [3 Prerequisites](#12)
   * [4 Folder structure](#13)
   * [5 Dataset](#14-references)
-  * [6 References](#15-references)
+  * [6 Look inside](#15)
+  * [7 References](#16)
 
 
 
