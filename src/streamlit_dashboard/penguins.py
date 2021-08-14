@@ -89,7 +89,7 @@ def render_streamlit():
         x="count()",
         y="Date Egg",
         color=alt.Color("Species", legend=alt.Legend(title="Species by color"))
-    ).properties(height=900)
+    ).properties(height=600)
 
     st.altair_chart(egg_chart, True)
 

@@ -1,112 +1,82 @@
 # CORE-project-penguins
-First project in CORE school 
 
-## 🐧🐧  Preparando dataset 🐧🐧
+![Imagen dibujo de especies de pingüinos Palmer](assets/lter_penguins.png)
 
-El dataset elegido en este proyecto ha sido "Palmer Archipelago Penguins" que contenía una serie de datos sobre varias colonias de pinguinos de la Antártida. 
+## 🐧 About The Project 
 
-En la limpieza de datos he eliminado aquellas columnas que hacían referencia a los análisis de sangre ('Delta 15 N (o/oo');'Delta 13 C (o/oo)') y la columna 'Comments' por tener gran cantidad de filas vacías. También he eliminado una columna con datos duplicados ('Stage') y otra con el código de cada estudio ('studyName').
+CORE-project-penguins es mi primer proyecto de CORE. Consiste en una API que hace peticiones a una base de datos con información sobre los pingüinos del archipiélago de Palmer y devuelve el resultado en un dashboard de Streamlit. 
 
-Además, he eliminado las filas de la columna 'Sex' que contenían nulos. 
+## Table of Contents 
 
-Todos estos pasos los he realizado en el archivo to_new_db.py 
-
-Con este limpiado de datos, me he centrado en las medidas que diferencian a cada pinguino, la especie e isla a donde pertenece. 
-
-La base de datos "limpia" la he subido a MongoDB Atlas y he accedido a ella a través de MongoCompass. 
-
-Está compuesta por dos colecciones, una con la información del dataset de los pinguinos y otra con el nombre y coordenadas de la isla a la que pertenecen.
-
-## 🐧🐧  Organización del código  🐧🐧
-
-El proyecto está dividido en tres carpetas diferentes de un mismo repositorio (CORE-project-penguins):
-
-- assets. 
-
-Contiene las imágenes utilizadas en el dashboard de Streamlit
-
-- data.
-
-Con los datos originales y limpiados de los que parte el proyecto. 
-
-- src.
-
-Es la carpeta raíz y en ella se desglosa prácticamente todo el código.
-
-
-Por otro lado se encuentran los archivos que no son código python: .env, readme, .gitignore, requerirements.
-
-
-## 🐧🐧 Creando API en Flask  🐧🐧
-
-Flask está repartido en varios:
-
-- controllers. root_controllers. La carpeta controllers contiene el archivo con las funciones controladoras que implementan los endpoints, son cuatro:
-
-1. La primera hace una petición a la base de datos de los pinguinos en formato json. Es la "raíz" de los endpoints. 
-
-2. La segunda contiene una petición a la segunda colección de la base de datos de los pinguinos donde guardo cada una de las coordenadas de las islas. Devuelve un json con una geoquery que marca la isla más cercana a las coordenadas dadas por el usuario en streamlit. 
-
-3. La tercera función hace una petición a una API que devuelve un json con las coordenadas del lugar que elija el usuario (en este caso son las islas de los pinguinos).
-
-- app. 
-
-Crea la aplicación de flask. 
-
-- config. 
-
-Contiene el puerto donde se va a ejecutar la API. 
-
-- server. 
-
-Inicia el servidor que expone la API.
-
-- main.
-
-Contiene el page_manager que gestiona las diferentes páginas de mi dashboard en streamlit. 
-
-
- ## 🐧🐧  Creando dashboard  🐧🐧
-
-Streamlit se reparte también en diferentes archivos. 
-
-- islands.
-
-Con el contenido que se muestra en la segunda página del dashboard:
-
-- Imágenes de las diferentes especies de pingüinos antárticos.
-- una request a la función controladora que muestra al usuario la isla más cercana a las coordenadas que indica por una casilla de texto. 
-
-- penguins.
-
-Muestra el contenido de la página principal del dashboard, con las imágenes de los pingüinos del archipiélago de Palmer, algunas estadísticas y un mapa que marca en el mapa las diferentes islas del archipiélago. 
-
-- multipage. 
-
-Contiene la clase y métodos que crean diferentes páginas en el dashboard de Streamlit. 
-
-- utils 
-    - hanndle_error. Devuelve un texto con un error en caso de que se produzca un fallo en la ejecución de la API. 
-
-    - json_response. Devuelve las respuestas en formato json. 
-
-    - mongo_connect. Conecta con la base de datos en MongoAtlas. 
-
-
- 🧊🧊🧊🧊🧊        🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧🐧                🧊🧊🧊🧊🧊 
+- * [1. About the project](#1)
+  * [2 Purpose](#11)
+  * [3 Prerequisites](#12)
+  * [4 Folder structure](#13)
+  * [5 Dataset](#14-references)
+  * [6 References](#15-references)
 
 
 
+## Prerequisites 
 
-### 😥  Cosas pendientes
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
-Además de cumplir con los siguientes levels del proyecto... me han quedado tareas pendientes que me gustaría haber realizado con el dataset.
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/Naereen/badges)
 
-- Añadir más gráficas a partir de los datos de las medidas del pico de los pingüinos de cada especie.
-- Crear más contenido en otras páginas del dashboard
-- Añadir botones con funcionalidades
-- Mejorar la estética y organización del readme. 
 
+Los siguientes paquetes de código abierto se han usado en este proyecto:
+
+* Pandas
+* Altair 
+* Streamlit 
+* json 
+* Flask 
+* dotenv
+
+## Folder Structure 
+
+``` 
+
+├── LICENSE
+├── README.md
+├── assets
+│  
+├── data
+│   ├── new_db.csv
+│   └── penguins_lter.csv
+├── requirements.txt
+└── src
+    ├── app.py
+    ├── config.py
+    ├── controllers
+    │   ├── __init__.py
+    │   └── root_controllers.py
+    ├── jupyter-notebook
+    │   ├── creating_df.ipynb
+    │   └── db_mongo_connect.ipynb
+    ├── main.py
+    ├── server.py
+    ├── streamlit_dashboard
+    │   ├── islands.py
+    │   ├── multipage.py
+    │   └── penguins.py
+    ├── to_new_db.py
+    └── utils
+        ├── handle_error.py
+        ├── json_response.py
+        └── mongo_connect.py
+```
+
+## 💾 Dataset
+
+[(https://www.kaggle.com/parulpandey/palmer-archipelago-antarctica-penguin-data)] 🐧
+
+
+## Look inside 
+
+![gráfica fecha puesta de huevos de especies de pingüinos Palmer](assets/egg.PNG)
+
+![gráfica fecha longitud del pico de especies de pingüinos Palmer](assets/culmen_dimension.PNG)
 
 ## 📚  References
 
