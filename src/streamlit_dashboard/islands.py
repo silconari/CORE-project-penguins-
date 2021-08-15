@@ -1,42 +1,49 @@
+from altair.vegalite.v4.schema.core import FontStyle, FontWeight
 import streamlit as st
 import os
 import requests
-import pandas as pd
+import altair as alt
 from streamlit_folium import folium_static
 import folium
 
 
 def render_streamlit():
 
-    st.title("More Antartic penguins...")
+    cols = st.columns((1, 3, 1))
 
-    images = st.image([os.path.join(os.path.dirname(__file__),
-                                    "../../assets/Emperor penguin.jpg"),
-                       os.path.join(os.path.dirname(__file__),
-                                    "../../assets/King penguin.jpg"),
-                       os.path.join(os.path.dirname(__file__),
-                                    '../../assets/Macaroni penguin.jpeg'),
+    cols[1].title("More Antartic penguins...")
 
-                       os.path.join(os.path.dirname(__file__),
-                                    '../../assets/rockhopper penguin.jpg'),
+    st.write(
+        "*Check out this to know more!* 🐧 [link](https://es.wikipedia.org/wiki/Spheniscidae)")
 
-                       os.path.join(os.path.dirname(__file__),
-                                    '../../assets/Royal penguin.jpg'),
+    cols[1].image([os.path.join(os.path.dirname(__file__),
+                                "../../assets/Emperor penguin.jpg"),
+                   os.path.join(os.path.dirname(__file__),
+                                "../../assets/King penguin.jpg"),
+                   os.path.join(os.path.dirname(__file__),
+                                '../../assets/Macaroni penguin.jpeg'),
 
-                       os.path.join(os.path.dirname(__file__),
-                                    '../../assets/rare penguin.jpg')
+                   os.path.join(os.path.dirname(__file__),
+                                '../../assets/rockhopper penguin.jpg'),
 
-                       ], width=300, caption=["Emperor", "King", "Macaroni", "rockhopper", "Royal", "rare"])
+                   os.path.join(os.path.dirname(__file__),
+                                '../../assets/Royal penguin.jpg'),
+
+                   os.path.join(os.path.dirname(__file__),
+                                '../../assets/rare penguin.jpg')
+
+                   ], width=300, caption=["Emperor", "King", "Macaroni", "rockhopper", "Royal", "rare"],)
 
     # Geolocalización de las islas del Archipiélago Palmer
 
-    st.header("Where penguins live?")
+    cols[1].header("**Where penguins live?**")
 
     initial_location = []
     folium_markers = []
 
-    def icon(): return folium.features.CustomIcon(
-        'https://d29fhpw069ctt2.cloudfront.net/icon/image/49037/preview.svg', icon_size=(30, 30))
+    def icon():
+        return folium.features.CustomIcon(
+            'https://d29fhpw069ctt2.cloudfront.net/icon/image/49037/preview.svg', icon_size=(30, 30))
 
     Torgersen = requests.get(
         "http://127.0.0.1:5000/location?name=Torgersen%20Island,%20Antarctica").json()
@@ -72,18 +79,19 @@ def render_streamlit():
     for elem in folium_markers:
         elem.add_to(m)
 
-    folium_static(m)
+    with cols[1]:
+        folium_static(m)
 
-    st.header("Which is nearest island from my ubication?")
+    st.header("**Which is nearest island from my ubication?**")
 
     form = st.form(key='my-form')
     coordinates = form.text_input('Enter latitude,longitude')
     submit = form.form_submit_button('Submit')
 
-    st.write('Press submit to have your nearest island printed below')
+    st.write('*Press submit to have your nearest island printed below*')
 
     if submit:
         response = requests.get(
             f"http://127.0.0.1:5000/islands?latlon={coordinates}").json()
 
-        st.write(f'The nearest island is {response["name"]}')
+        st.write(f'*The nearest island is {response["name"]}*')

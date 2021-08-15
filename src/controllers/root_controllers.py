@@ -11,14 +11,14 @@ load_dotenv()
 
 
 @app.route("/")
-# @handle_error
+@handle_error
 def get_coll_penguins():
     penguins_coll = get_mongo_db().get_collection("penguins")
     return json_util.dumps(list(penguins_coll.find({})))
 
 
 @app.route("/islands")
-# @handle_error
+@handle_error
 def get_coll_islands():
     lat_lon = request.args["latlon"].split(",")
     lat_lon = [float(e) for e in lat_lon]
@@ -42,7 +42,7 @@ def get_coll_islands():
 
 
 @app.route("/location")
-# @handle_error
+@handle_error
 def get_geoquery():
     API_key = os.getenv("API_key")
     name = request.args["name"]

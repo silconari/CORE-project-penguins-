@@ -12,4 +12,5 @@ page_manager.add_page(title="Palmer penguins",
 page_manager.add_page(title="Antartic info",
                       func=islands.render_streamlit)
 
+
 page_manager.run()
