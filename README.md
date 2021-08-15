@@ -28,12 +28,14 @@ CORE-project-penguins es mi primer proyecto de CORE. Consiste en una API que hac
 Los siguientes paquetes de código abierto se han usado en este proyecto:
 
 * Pandas
+* Mongo DB
 * Altair 
 * Streamlit 
 * json 
 * Flask 
 * dotenv
 * Folium 
+
 
 ## Folder Structure 
 
