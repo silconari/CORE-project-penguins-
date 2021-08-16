@@ -83,7 +83,7 @@ Fecha de la puesta de los pingüinos:
 
 Comparativas de la longitud del pico en las diferentes especies:
 
-![gráfica comparativa de la longitud del pico de especies de pingüinos Palmer](assets/culmen_dimension.PNG)
+![gráfica comparativa de la longitud del pico de especies de pingüinos Palmer](assets/culmen_dimension.png)
 
 Marcadores con las islas del archipiélago:
 
