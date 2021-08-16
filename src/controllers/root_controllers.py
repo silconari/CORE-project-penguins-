@@ -17,8 +17,24 @@ def get_coll_penguins():
     return json_util.dumps(list(penguins_coll.find({})))
 
 
-@app.route("/islands")
-@handle_error
+@app.route("/penguins")
+# @handle_error
+def info_sex_penguins():
+
+    penguin_sex = request.args.getlist("sex")
+    penguin_species = request.args.getlist("species")
+    penguins_coll = get_mongo_db().get_collection("penguins")
+    penguins_info = {}
+
+    if penguin_sex:
+        penguins_info["Sex"] = {"$in": penguin_sex}
+    if penguin_species:
+        penguins_info["Species"] = {"$in": penguin_species}
+    return json_util.dumps(list(penguins_coll.find(penguins_info)))
+
+
+@ app.route("/islands")
+@ handle_error
 def get_coll_islands():
     lat_lon = request.args["latlon"].split(",")
     lat_lon = [float(e) for e in lat_lon]
@@ -41,8 +57,8 @@ def get_coll_islands():
     )
 
 
-@app.route("/location")
-@handle_error
+@ app.route("/location")
+@ handle_error
 def get_geoquery():
     API_key = os.getenv("API_key")
     name = request.args["name"]

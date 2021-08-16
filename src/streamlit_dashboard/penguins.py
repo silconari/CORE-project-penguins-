@@ -1,3 +1,4 @@
+from flask.scaffold import F
 import streamlit as st
 import altair as alt
 import os
@@ -70,13 +71,42 @@ def render_streamlit():
 
     st.header("*Penguin size by species*")
 
-    body_mass_chart = alt.Chart(penguins_db).mark_circle().encode(
-        x="Flipper Length (mm)",
-        y="Body Mass (g)",
-        color=alt.Color("Species", legend=alt.Legend(title="Species by color"))
-    ).properties(height=1000)
+    sex = st.multiselect("Pick a sex", ("MALE", "FEMALE"))
 
+    species = st.multiselect("Pick a species", ("Adelie Penguin (Pygoscelis adeliae)",
+                                                "Chinstrap penguin (Pygoscelis antarctica)", "Gentoo penguin (Pygoscelis papua)"))
+
+    params = {"sex": sex, "species": species}
+
+    url = f"http://127.0.0.1:5000/penguins"
+
+    response = requests.get(url, params=params)
+
+    penguins_options = pd.DataFrame.from_records(response.json())
+
+    body_mass_chart = alt.Chart(penguins_options).mark_circle().encode(
+        x=alt.X("Flipper Length (mm):Q", scale=alt.Scale(zero=False)),
+        y=alt.Y("Body Mass (g):Q", scale=alt.Scale(zero=False)),
+        color=alt.Color("Species:N", legend=alt.Legend(
+            title="Species by color"))
+    )
     st.altair_chart(body_mass_chart, True)
+
+    # Dimensiones del pico por especie
+
+    st.subheader("*Penguin culmen dimensions*")
+
+    st.image([os.path.join(os.path.dirname(__file__),
+                           "../../assets/culmen_depth.png")], width=200)
+
+    culmen_chart = alt.Chart(penguins_options).mark_circle().encode(
+        x=alt.X("Culmen Length (mm):Q", scale=alt.Scale(zero=False)),
+        y=alt.Y("Culmen Depth (mm):Q", scale=alt.Scale(zero=False)),
+        color=alt.Color("Species:N", legend=alt.Legend(
+            title="Species by color"))
+    )
+
+    st.altair_chart(culmen_chart, True)
 
     # Tamaño de las aletas
 
@@ -89,21 +119,6 @@ def render_streamlit():
     ).properties(height=300)
 
     st.altair_chart(flipper_chart, True)
-
-    # Dimensiones del pico por especie
-
-    st.header("*Penguin culmen dimensions*")
-
-    st.image([os.path.join(os.path.dirname(__file__),
-                           "../../assets/culmen_depth.png")], width=200)
-
-    culmen_chart = alt.Chart(penguins_db).mark_bar().encode(
-        x="Culmen Length (mm)",
-        y="Culmen Depth (mm)",
-        color=alt.Color("Species", legend=alt.Legend(title="Species by color"))
-    ).properties(height=800)
-
-    st.altair_chart(culmen_chart, True)
 
     # Fecha de la puesta por especie
 
