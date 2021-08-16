@@ -27,7 +27,7 @@
             "module": "streamlit.cli",
             "args": [
                 "run",
-                "${workspaceFolder}/src/streamlit/streamlit_penguins.py"
+                "${workspaceFolder}/src/main.py"
             ]
         }
     ]
