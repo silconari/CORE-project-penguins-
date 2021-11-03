@@ -1,8 +1,6 @@
-from altair.vegalite.v4.schema.core import FontStyle, FontWeight
 import streamlit as st
 import os
 import requests
-import altair as alt
 from streamlit_folium import folium_static
 import folium
 
