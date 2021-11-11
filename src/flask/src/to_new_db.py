@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 csvfile = os.path.join(os.path.dirname(__file__),
-                       "../data/penguins_lter.csv")
+                       "../../data/penguins_lter.csv")
 
 main_db = pd.read_csv(csvfile, sep=";")
 main_db.drop(columns=["Stage", "studyName", "Sample Number", "Delta 15 N (o/oo)",

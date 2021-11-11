@@ -7,6 +7,8 @@ import folium
 
 def render_streamlit():
 
+    url_api = os.getenv('URL_API')
+
     cols = st.columns((1, 3, 1))
 
     cols[1].title("More Antartic penguins...")
@@ -15,20 +17,20 @@ def render_streamlit():
         "*Check out this to know more!* 🐧 [link](https://es.wikipedia.org/wiki/Spheniscidae)")
 
     cols[1].image([os.path.join(os.path.dirname(__file__),
-                                "../../assets/Emperor penguin.jpg"),
+                                "../assets/Emperor penguin.jpg"),
                    os.path.join(os.path.dirname(__file__),
-                                "../../assets/King penguin.jpg"),
+                                "../assets/King penguin.jpg"),
                    os.path.join(os.path.dirname(__file__),
-                                '../../assets/Macaroni penguin.jpeg'),
+                                '../assets/Macaroni penguin.jpeg'),
 
                    os.path.join(os.path.dirname(__file__),
-                                '../../assets/rockhopper penguin.jpg'),
+                                '../assets/rockhopper penguin.jpg'),
 
                    os.path.join(os.path.dirname(__file__),
-                                '../../assets/Royal penguin.jpg'),
+                                '../assets/Royal penguin.jpg'),
 
                    os.path.join(os.path.dirname(__file__),
-                                '../../assets/rare penguin.jpg')
+                                '../assets/rare penguin.jpg')
 
                    ], width=300, caption=["Emperor", "King", "Macaroni", "rockhopper", "Royal", "rare"],)
 
@@ -44,7 +46,7 @@ def render_streamlit():
             'https://d29fhpw069ctt2.cloudfront.net/icon/image/49037/preview.svg', icon_size=(30, 30))
 
     Torgersen = requests.get(
-        "http://127.0.0.1:5000/location?name=Torgersen%20Island,%20Antarctica").json()
+        f"{url_api}/location?name=Torgersen%20Island,%20Antarctica").json()
 
     initial_location = [-64.968089, -63.551734]
 
@@ -56,7 +58,7 @@ def render_streamlit():
     )
 
     Biscoe = requests.get(
-        "http://127.0.0.1:5000/location?name=Biscoe%20Islands,%20Antarctica").json()
+        f"{url_api}/location?name=Biscoe%20Islands,%20Antarctica").json()
 
     folium_markers.append(
         folium.Marker(
@@ -90,6 +92,6 @@ def render_streamlit():
 
     if submit:
         response = requests.get(
-            f"http://127.0.0.1:5000/islands?latlon={coordinates}").json()
+            f"{url_api}/islands?latlon={coordinates}").json()
 
         st.write(f'*The nearest island is {response["name"]}*')

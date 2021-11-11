@@ -8,17 +8,19 @@ import pandas as pd
 
 def render_streamlit():
 
+    url_api = os.getenv('URL_API')
+
     cols = st.columns((1, 3, 1))
 
     cols[1].title("Welcome to Palmer penguins")
 
     cols[1].image([os.path.join(os.path.dirname(__file__),
-                                "../../assets/Adelie_penguin.jpg"),
+                                "../assets/Adelie_penguin.jpg"),
                    os.path.join(os.path.dirname(__file__),
-                                "../../assets/Chinstrap_penguin.jpg"),
-                   os.path.join(os.path.dirname(__file__), '../../assets/Gentoo_penguin.jpg')], width=200, caption=["Adelie", "Chinstrap", "Gentoo"])
+                                "../assets/Chinstrap_penguin.jpg"),
+                   os.path.join(os.path.dirname(__file__), '../assets/Gentoo_penguin.jpg')], width=200, caption=["Adelie", "Chinstrap", "Gentoo"])
 
-    response = requests.get("http://127.0.0.1:5000/")
+    response = requests.get(url_api)
 
     # ¿Cuántos pingüinos hay de cada especie?
 
@@ -78,7 +80,7 @@ def render_streamlit():
 
     params = {"sex": sex, "species": species}
 
-    url = f"http://127.0.0.1:5000/penguins"
+    url = f"{url_api}/penguins"
 
     response = requests.get(url, params=params)
 
@@ -97,7 +99,7 @@ def render_streamlit():
     st.subheader("*Penguin culmen dimensions*")
 
     st.image([os.path.join(os.path.dirname(__file__),
-                           "../../assets/culmen_depth.png")], width=200)
+                           "../assets/culmen_depth.png")], width=200)
 
     culmen_chart = alt.Chart(penguins_options).mark_circle().encode(
         x=alt.X("Culmen Length (mm):Q", scale=alt.Scale(zero=False)),

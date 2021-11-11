@@ -1,7 +1,10 @@
-import streamlit_dashboard.penguins as penguins
-import streamlit_dashboard.islands as islands
+from dotenv import load_dotenv
+import penguins as penguins
+import islands as islands
 import streamlit as st
-from streamlit_dashboard.multipage import MultiPage
+from multipage import MultiPage
+
+load_dotenv()
 
 page_manager = MultiPage()
 
